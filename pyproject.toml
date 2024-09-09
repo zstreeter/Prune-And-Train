@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "Prune-And-Train"
+version = "0.1.0"
+authors = [{ name = "Zachary Streeter", email = "zacharylouis42@gmail.com" }]
+description = "A JAX project for iterative pruning and retraining of AlexNet on tiny-imagenet-200 dataset."
+readme = "README.md"
+license = { file = "LICENSE.txt" }
+requires-python = ">=3.6"
+
+dependencies = [
+  "jax>=0.4.15",  # JAX for numerical computing
+  "flax>=0.6.8",  # Flax for neural networks and training utilities
+  "optax>=0.1.4", # Optax for optimization algorithms
+  "tensorflow",   # TensorFlow for dataset management
+  "matplotlib",   # For plotting and visualization
+  "numpy",        # General numerical computing
+  "tqdm"          # For progress bars during training
+]
+
+[tool.setuptools]
+packages = ["src"]
+
+[tool.setuptools.package-data]
+"src" = ["*.py"]
+
+[project.scripts]
+prune_and_train = "src.cli:main"
